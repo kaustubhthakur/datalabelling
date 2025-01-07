@@ -4,21 +4,20 @@ const PostSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    imageA: {
 
+    images: {
+        img1: { type: String, required: true }, // URL or path for the first image
+        img2: { type: String, required: true }, // URL or path for the second image
     },
-    imageB: {
-
+    votes: {
+        vote1: { type: Number, default: 0 }, // Count for vote1
+        vote2: { type: Number, default: 0 }, // Count for vote2
     },
-    vote: {
-        type: [String],
-        default: [],
-    }, 
     userId: {
         type: String,
         required: true,
     }
-},{
-    timestamps:true,
+}, {
+    timestamps: true,
 })
-module.exports = mongoose.model("Post",PostSchema);
+module.exports = mongoose.model("Post", PostSchema);
