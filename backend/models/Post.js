@@ -10,8 +10,8 @@ const PostSchema = new mongoose.Schema({
         img2: { type: String, required: true }, // URL or path for the second image
     },
     votes: {
-        vote1: { type: Number, default: 0 }, // Count for vote1
-        vote2: { type: Number, default: 0 }, // Count for vote2
+        voteA: { type: [String], default: [] }, // Count for vote1
+        voteB: { type: [String], default: [] }, // Count for vote2
     },
     userId: {
         type: String,
