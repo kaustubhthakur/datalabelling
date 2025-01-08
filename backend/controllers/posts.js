@@ -18,9 +18,9 @@ const getposts = async(req,res)=> {
 }
 const likeUnlikePost = async (req, res) => {
     try {
-        const { id: postId } = req.params; // Extract post ID from request params
-        const { voteType } = req.body; // Expect "voteType" to be either "voteA" or "voteB"
-        const userId = req.user._id; // Get user ID from the authenticated user
+        const { id: postId } = req.params; 
+        const { voteType } = req.body; 
+        const userId = req.user._id; 
 
         if (!['voteA', 'voteB'].includes(voteType)) {
             return res.status(400).json({ error: "Invalid vote type. Use 'voteA' or 'voteB'." });
@@ -34,18 +34,18 @@ const likeUnlikePost = async (req, res) => {
 
         const oppositeVoteType = voteType === 'voteA' ? 'voteB' : 'voteA';
 
-        // Check if the user has already voted for this or the opposite image
+
         const hasVotedCurrent = post.votes[voteType].includes(userId);
         const hasVotedOpposite = post.votes[oppositeVoteType].includes(userId);
 
         if (hasVotedCurrent) {
-            // User unlikes the current vote type
+            
             post.votes[voteType] = post.votes[voteType].filter(voter => voter !== userId);
         } else {
-            // User votes for the current vote type
+         
             post.votes[voteType].push(userId);
 
-            // Remove the user from the opposite vote type if voted
+
             if (hasVotedOpposite) {
                 post.votes[oppositeVoteType] = post.votes[oppositeVoteType].filter(voter => voter !== userId);
             }

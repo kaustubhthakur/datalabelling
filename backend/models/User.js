@@ -13,12 +13,12 @@ const UserSchema = new mongoose.Schema({
        required:true, 
     },
     posts:{
-        type:String,
-        required:true,
+        type:[String],
+       default:[],
     },
     profilePic:{
         type:String,
-        required:true,
+      default:""
     }
 },{
     timestamps:true,
