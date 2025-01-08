@@ -18,6 +18,7 @@ const connection = async(req,res)=>{
         console.error(error);
     }
 }
+connection();
 app.use('/auth',authrouter)
 app.use('/posts',postsrouter)
 app.listen(port,() => {
